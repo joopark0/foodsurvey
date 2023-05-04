@@ -1,8 +1,13 @@
 import logo from './images/cogs.png';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
-  return <div className="App">test</div>;
+  return (
+    <div className="App">
+      <Header />
+    </div>
+  );
 }
 
 export default App;

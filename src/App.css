@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body{
+  margin:0;
+  background-color: azure;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -11,6 +16,13 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.navmain{
+  background-color: #282c34;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .App-header {
