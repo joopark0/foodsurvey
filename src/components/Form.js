@@ -11,7 +11,7 @@ const Form = (props) => {
           Date of Visit:{' '}
           <input type="date" value={dateNumber} min="2020-01-01" max={today} />
           Time of Visit:{' '}
-          <input value={restNumber} onChange={handlerestNumber} />
+          <input type="time" value={restNumber} onChange={handlerestNumber} />
         </div>
       </form>
     </div>
