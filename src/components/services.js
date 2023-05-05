@@ -5,3 +5,7 @@ const sendData = (formData) => {
   const request = axios.post(baseURL, formData);
   return request.then((res) => res.data);
 };
+
+export default {
+  sendData,
+};
