@@ -38,7 +38,11 @@ const Form = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           Restaurant Number:{' '}
-          <input value={restNumber} onChange={handlerestNumber} />
+          <input
+            value={restNumber}
+            onChange={handlerestNumber}
+            className="rest-number"
+          />
           Date of Visit:{' '}
           <input
             type="date"
@@ -82,7 +86,9 @@ const Form = (props) => {
           </select>
         </div>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </div>
       </form>
     </div>

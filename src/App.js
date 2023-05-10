@@ -39,6 +39,7 @@ const App = () => {
       meridiantime: meridianTime,
     };
     back.sendData(jsonload);
+    console.log('clicked');
     return null;
   };
 
