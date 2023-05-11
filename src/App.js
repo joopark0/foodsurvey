@@ -10,6 +10,7 @@ const App = () => {
   const [hoursNumber, sethoursNumber] = useState('');
   const [minutesNumber, setminutesNumber] = useState('');
   const [meridianTime, setmeridianTime] = useState('');
+  const [returnCode, setreturnCode] = useState('');
 
   const handlerestNumber = (e) => {
     setrestNumber(e.target.value);
@@ -38,8 +39,7 @@ const App = () => {
       minutesnum: minutesNumber,
       meridiantime: meridianTime,
     };
-    back.sendData(jsonload);
-    console.log('clicked');
+    back.sendData(jsonload).then((res) => setreturnCode(res.code));
     return null;
   };
 
@@ -59,6 +59,7 @@ const App = () => {
         minutesNumber={minutesNumber}
         meridianTime={meridianTime}
       />
+      <p>{returnCode}</p>
     </div>
   );
 };

@@ -2,7 +2,9 @@ const Header = () => {
   return (
     <div>
       <nav className="navmain">
-        <nav className="navleft">TEST</nav>
+        <nav className="navleft" id="navLeft">
+          TEST
+        </nav>
         <nav className="navright">TESTRIGHT</nav>
       </nav>
     </div>

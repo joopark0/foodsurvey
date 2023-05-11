@@ -25,7 +25,7 @@ const Form = (props) => {
   });
 
   const minutes = [];
-  for (let x = 1; x < 61; x++) {
+  for (let x = 1; x < 60; x++) {
     minutes.push(String(x));
   }
   const newminutes = minutes.map((val) => {
@@ -39,12 +39,14 @@ const Form = (props) => {
         <div>
           Restaurant Number:{' '}
           <input
+            id="restnumber"
             value={restNumber}
             onChange={handlerestNumber}
             className="rest-number"
           />
           Date of Visit:{' '}
           <input
+            id="dateofvisit"
             type="date"
             value={dateNumber}
             min="2020-01-01"
@@ -86,7 +88,7 @@ const Form = (props) => {
           </select>
         </div>
         <div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" id="submitbutton">
             Submit
           </button>
         </div>
