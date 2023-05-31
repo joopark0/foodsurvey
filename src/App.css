@@ -19,12 +19,14 @@ body{
 }
 
 .navmain{
-  background-color: white;
+  background-color: #282c34;
   padding: 30px;
   display: flex;
   justify-content: space-between;
 }
-
+.navleft{
+  color: white;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
