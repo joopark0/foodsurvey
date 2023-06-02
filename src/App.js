@@ -47,7 +47,7 @@ const App = () => {
     <div className="App">
       <Header />
       <br></br>
-      <div>Please Enter Wendys Receipt Info</div>
+      <div className="mainTitle">Please Enter Wendys Receipt Info</div>
       <br></br>
       <Form
         handleSubmit={handleSubmit}

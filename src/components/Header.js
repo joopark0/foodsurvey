@@ -3,7 +3,7 @@ const Header = () => {
     <div>
       <nav className="navmain">
         <nav className="navleft" id="navLeft">
-          Welcome!
+          Food Survey Completer
         </nav>
         <nav className="navright"></nav>
       </nav>

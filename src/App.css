@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+
 .App {
   text-align: center;
+}
+.mainTitle{
+  font-family: Geologica
+}
+div{
+  font-family: Geologica;
 }
 
 body{
@@ -7,6 +15,12 @@ body{
   background-color: azure;
 }
 
+.submit-button{
+  font-family: Geologica;
+  border-radius: 20px;
+  width: 150px;
+  height: 30px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

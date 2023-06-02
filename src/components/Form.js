@@ -37,55 +37,69 @@ const Form = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          Restaurant Number:{' '}
-          <input
-            id="restnumber"
-            value={restNumber}
-            onChange={handlerestNumber}
-            className="rest-number"
-          />
-          Date of Visit:{' '}
-          <input
-            id="dateofvisit"
-            type="date"
-            value={dateNumber}
-            min="2020-01-01"
-            max={today}
-            onChange={handledateNumber}
-          />
-          Time of Visit:{' '}
-          <select
-            id="inputhours"
-            name="inputhours"
-            value={hoursNumber}
-            onChange={handlehoursNumber}
-          >
-            <option value>--</option>
-            {newhours.map((x) => (
-              <option value={x}>{x}</option>
-            ))}
-          </select>
-          <select
-            name="inputminutes"
-            id="inputminutes"
-            value={minutesNumber}
-            onChange={handleminutesNumber}
-          >
-            <option value>--</option>
-            {newminutes.map((x) => (
-              <option value={x}>{x}</option>
-            ))}
-          </select>
-          <select
-            name="meridiantime"
-            id="meridiantime"
-            value={meridianTime}
-            onChange={handlemeridianTime}
-          >
-            <option value>--</option>
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
+          <div className="forminfo">
+            Restaurant Number:{' '}
+            <input
+              id="restnumber"
+              value={restNumber}
+              onChange={handlerestNumber}
+              className="rest-number"
+              required
+            />
+          </div>
+          <br></br>
+          <div className="forminfo">
+            Date of Visit:{' '}
+            <input
+              id="dateofvisit"
+              type="date"
+              value={dateNumber}
+              min="2020-01-01"
+              max={today}
+              onChange={handledateNumber}
+              required
+            />
+          </div>
+          <br></br>
+          <div className="forminfo">
+            Time of Visit:{' '}
+            <select
+              id="inputhours"
+              name="inputhours"
+              value={hoursNumber}
+              onChange={handlehoursNumber}
+              required
+            >
+              <option value>--</option>
+              {newhours.map((x) => (
+                <option value={x}>{x}</option>
+              ))}
+            </select>
+            <select
+              name="inputminutes"
+              id="inputminutes"
+              value={minutesNumber}
+              onChange={handleminutesNumber}
+              required
+            >
+              <option value>--</option>
+              {newminutes.map((x) => (
+                <option value={x}>{x}</option>
+              ))}
+            </select>
+            <select
+              name="meridiantime"
+              id="meridiantime"
+              value={meridianTime}
+              onChange={handlemeridianTime}
+              required
+            >
+              <option value>--</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+          <br></br>
         </div>
         <div>
           <button type="submit" className="submit-button" id="submitbutton">
