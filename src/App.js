@@ -32,6 +32,7 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setreturnCode('');
     const jsonload = {
       restnum: restNumber,
       datenum: dateNumber,
