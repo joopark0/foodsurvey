@@ -105,6 +105,7 @@ const Form = (props) => {
           <button type="submit" className="submit-button" id="submitbutton">
             Submit
           </button>
+          <div id="loader"></div>
         </div>
       </form>
     </div>

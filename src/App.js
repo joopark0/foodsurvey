@@ -31,6 +31,8 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
+    const loadcircle = document.getElementById('loader');
+    loadcircle.style.display = 'block';
     e.preventDefault();
     setreturnCode('');
     const jsonload = {
@@ -40,7 +42,11 @@ const App = () => {
       minutesnum: minutesNumber,
       meridiantime: meridianTime,
     };
-    back.sendData(jsonload).then((res) => setreturnCode(res.code));
+    back.sendData(jsonload).then((res) => {
+      setreturnCode(res.code);
+      loadcircle.style.display = 'none';
+    });
+
     return null;
   };
 
