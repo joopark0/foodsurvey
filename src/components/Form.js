@@ -72,7 +72,9 @@ const Form = (props) => {
             >
               <option value>--</option>
               {newhours.map((x) => (
-                <option value={x}>{x}</option>
+                <option value={x} key={`h+${x}`}>
+                  {x}
+                </option>
               ))}
             </select>
             <select
@@ -84,7 +86,9 @@ const Form = (props) => {
             >
               <option value>--</option>
               {newminutes.map((x) => (
-                <option value={x}>{x}</option>
+                <option value={x} key={`m+${x}`}>
+                  {x}
+                </option>
               ))}
             </select>
             <select
