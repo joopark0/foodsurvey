@@ -102,7 +102,7 @@ const Form = (props) => {
           <br></br>
         </div>
         <div>
-          <button type="submit" className="submit-button" id="submitbutton">
+          <button type="submit" className="submitbutton" id="submitbutton">
             Submit
           </button>
           <div id="loader"></div>
