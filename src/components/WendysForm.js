@@ -8,7 +8,10 @@ const Form = () => {
   const [minutesNumber, setminutesNumber] = useState('');
   const [meridianTime, setmeridianTime] = useState('');
   const [returnCode, setreturnCode] = useState('');
-  //test change
+  //Submitting status to prevent multiple submits
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  //handle numbers
   const handlerestNumber = (e) => {
     setrestNumber(e.target.value);
   };
@@ -28,9 +31,15 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-    const loadcircle = document.getElementById('loader');
-    loadcircle.style.display = 'block';
     e.preventDefault();
+
+    if (isSubmitting) {
+      return; // Prevent multiple submissions while the promise is being resolved
+    }
+
+    const loadCircle = document.getElementById('loader');
+    loadCircle.style.display = 'block';
+    setIsSubmitting(true);
     setreturnCode('');
     const jsonload = {
       restnum: restNumber,
@@ -39,10 +48,15 @@ const Form = () => {
       minutesnum: minutesNumber,
       meridiantime: meridianTime,
     };
-    back.sendData(jsonload).then((res) => {
-      setreturnCode(res.code);
-      loadcircle.style.display = 'none';
-    });
+    back
+      .sendData(jsonload)
+      .then((res) => {
+        setreturnCode(res.code);
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Reset isSubmitting to false when the promise is fulfilled
+        loadCircle.style.display = 'none';
+      });
 
     return null;
   };
