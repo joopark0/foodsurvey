@@ -9,6 +9,8 @@ const Header = (props) => {
         <nav className="navright">
           DISCLAIMER: As this is a small project if it takes more than 15
           seconds, please refresh and try again as Heroku idle's unused apps
+          <br></br>
+          *Currently only Wendy's works, working on other stores!
         </nav>
       </nav>
     </div>

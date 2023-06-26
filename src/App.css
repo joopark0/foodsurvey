@@ -163,6 +163,12 @@ input{
   border-radius: 15%;
 }
 
+.rest:hover{
+  transform: scale(1.05);
+  border-radius: 15%;
+  box-shadow: 0px 0px 24px #2660A4;
+  
+}
 .restText{
   font-size: larger;
   position: absolute;
