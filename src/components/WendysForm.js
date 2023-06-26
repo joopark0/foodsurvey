@@ -1,17 +1,51 @@
-const Form = (props) => {
-  const {
-    handleSubmit,
-    restNumber,
-    handlerestNumber,
-    dateNumber,
-    handledateNumber,
-    hoursNumber,
-    handlehoursNumber,
-    minutesNumber,
-    handleminutesNumber,
-    meridianTime,
-    handlemeridianTime,
-  } = props;
+import back from './services';
+import { useState } from 'react';
+
+const Form = () => {
+  const [restNumber, setrestNumber] = useState('');
+  const [dateNumber, setdateNumber] = useState('');
+  const [hoursNumber, sethoursNumber] = useState('');
+  const [minutesNumber, setminutesNumber] = useState('');
+  const [meridianTime, setmeridianTime] = useState('');
+  const [returnCode, setreturnCode] = useState('');
+  //test change
+  const handlerestNumber = (e) => {
+    setrestNumber(e.target.value);
+  };
+
+  const handledateNumber = (e) => {
+    setdateNumber(e.target.value);
+  };
+
+  const handlehoursNumber = (e) => {
+    sethoursNumber(e.target.value);
+  };
+  const handleminutesNumber = (e) => {
+    setminutesNumber(e.target.value);
+  };
+  const handlemeridianTime = (e) => {
+    setmeridianTime(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    const loadcircle = document.getElementById('loader');
+    loadcircle.style.display = 'block';
+    e.preventDefault();
+    setreturnCode('');
+    const jsonload = {
+      restnum: restNumber,
+      datenum: dateNumber,
+      hoursnum: hoursNumber,
+      minutesnum: minutesNumber,
+      meridiantime: meridianTime,
+    };
+    back.sendData(jsonload).then((res) => {
+      setreturnCode(res.code);
+      loadcircle.style.display = 'none';
+    });
+
+    return null;
+  };
   const today = new Date().toLocaleDateString('en-ca');
 
   //set hours
@@ -35,6 +69,8 @@ const Form = (props) => {
 
   return (
     <div>
+      <div className="mainTitle">Please Enter Wendys Receipt Info</div>
+      <br />
       <form onSubmit={handleSubmit}>
         <div>
           <div className="forminfo">
@@ -112,6 +148,7 @@ const Form = (props) => {
           <div id="loader"></div>
         </div>
       </form>
+      <p>{returnCode}</p>
     </div>
   );
 };

@@ -1,75 +1,37 @@
+import { useState } from 'react';
 import './App.css';
-import back from './components/services';
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Form from './components/Form';
+import WendysForm from './components/WendysForm';
+import char1 from './images/char1.webp';
+import char2 from './images/char2.jpeg';
 
 const App = () => {
-  const [restNumber, setrestNumber] = useState('');
-  const [dateNumber, setdateNumber] = useState('');
-  const [hoursNumber, sethoursNumber] = useState('');
-  const [minutesNumber, setminutesNumber] = useState('');
-  const [meridianTime, setmeridianTime] = useState('');
-  const [returnCode, setreturnCode] = useState('');
-  //test change
-  const handlerestNumber = (e) => {
-    setrestNumber(e.target.value);
-  };
+  const [visible, setVisible] = useState(true);
+  const [storeComponent, setStoreComponent] = useState(null);
 
-  const handledateNumber = (e) => {
-    setdateNumber(e.target.value);
-  };
-
-  const handlehoursNumber = (e) => {
-    sethoursNumber(e.target.value);
-  };
-  const handleminutesNumber = (e) => {
-    setminutesNumber(e.target.value);
-  };
-  const handlemeridianTime = (e) => {
-    setmeridianTime(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    const loadcircle = document.getElementById('loader');
-    loadcircle.style.display = 'block';
-    e.preventDefault();
-    setreturnCode('');
-    const jsonload = {
-      restnum: restNumber,
-      datenum: dateNumber,
-      hoursnum: hoursNumber,
-      minutesnum: minutesNumber,
-      meridiantime: meridianTime,
-    };
-    back.sendData(jsonload).then((res) => {
-      setreturnCode(res.code);
-      loadcircle.style.display = 'none';
-    });
-
-    return null;
+  const changeStore = (Store) => {
+    setVisible(false);
+    console.log(Store);
+    setStoreComponent(<Store />);
   };
 
   return (
     <div className="App">
       <Header />
       <br></br>
-      <div className="mainTitle">Please Enter Wendys Receipt Info</div>
-      <br></br>
-      <Form
-        handleSubmit={handleSubmit}
-        handlerestNumber={handlerestNumber}
-        handledateNumber={handledateNumber}
-        handlehoursNumber={handlehoursNumber}
-        handleminutesNumber={handleminutesNumber}
-        handlemeridianTime={handlemeridianTime}
-        restNumber={restNumber}
-        dateNumber={dateNumber}
-        hoursNumber={hoursNumber}
-        minutesNumber={minutesNumber}
-        meridianTime={meridianTime}
-      />
-      <p>{returnCode}</p>
+      {visible && (
+        <div className="rest-grid">
+          <div className="rest" onClick={() => changeStore(WendysForm)}>
+            <div className="restText">Wendys</div>
+            <img src={char1} />
+          </div>
+          <div className="rest">
+            <img src={char2} alt="" />
+          </div>
+        </div>
+      )}
+      {storeComponent}
     </div>
   );
 };
