@@ -1,75 +1,58 @@
-import './App.css';
-import back from './components/services';
 import { useState, useEffect } from 'react';
+import './App.css';
+import {
+  Route,
+  Routes,
+  Link,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+//import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Form from './components/Form';
+import Home from './components/Home';
+import WendysForm from './components/WendysForm';
+import McdonaldsForm from './components/McdonaldsForm';
+import mcdlogo from './images/mcdlogo.png';
+import wendyslogo from './images/Wendys-logo.png';
 
 const App = () => {
-  const [restNumber, setrestNumber] = useState('');
-  const [dateNumber, setdateNumber] = useState('');
-  const [hoursNumber, sethoursNumber] = useState('');
-  const [minutesNumber, setminutesNumber] = useState('');
-  const [meridianTime, setmeridianTime] = useState('');
-  const [returnCode, setreturnCode] = useState('');
-  //test change
-  const handlerestNumber = (e) => {
-    setrestNumber(e.target.value);
-  };
+  const [visible, setVisible] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handledateNumber = (e) => {
-    setdateNumber(e.target.value);
-  };
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setVisible(true);
+    } else setVisible(false);
+  }, [location]);
 
-  const handlehoursNumber = (e) => {
-    sethoursNumber(e.target.value);
-  };
-  const handleminutesNumber = (e) => {
-    setminutesNumber(e.target.value);
-  };
-  const handlemeridianTime = (e) => {
-    setmeridianTime(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    const loadcircle = document.getElementById('loader');
-    loadcircle.style.display = 'block';
-    e.preventDefault();
-    setreturnCode('');
-    const jsonload = {
-      restnum: restNumber,
-      datenum: dateNumber,
-      hoursnum: hoursNumber,
-      minutesnum: minutesNumber,
-      meridiantime: meridianTime,
-    };
-    back.sendData(jsonload).then((res) => {
-      setreturnCode(res.code);
-      loadcircle.style.display = 'none';
-    });
-
-    return null;
+  const changeVisibility = () => {
+    setVisible(false);
   };
 
   return (
     <div className="App">
-      <Header />
+      <Header navigate={navigate} />
       <br></br>
-      <div className="mainTitle">Please Enter Wendys Receipt Info</div>
-      <br></br>
-      <Form
-        handleSubmit={handleSubmit}
-        handlerestNumber={handlerestNumber}
-        handledateNumber={handledateNumber}
-        handlehoursNumber={handlehoursNumber}
-        handleminutesNumber={handleminutesNumber}
-        handlemeridianTime={handlemeridianTime}
-        restNumber={restNumber}
-        dateNumber={dateNumber}
-        hoursNumber={hoursNumber}
-        minutesNumber={minutesNumber}
-        meridianTime={meridianTime}
-      />
-      <p>{returnCode}</p>
+      {visible && (
+        <div className="rest-grid">
+          <div className="rest">
+            <Link to="/Wendys" onClick={changeVisibility}>
+              <img src={wendyslogo} alt="wendys logo" className="logo-image" />
+            </Link>
+          </div>
+          <Link to="/Mcdonalds" onClick={changeVisibility}>
+            <div className="rest">
+              <img src={mcdlogo} alt="mcdonalds logo" className="logo-image" />
+            </div>
+          </Link>
+        </div>
+      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Wendys" element={<WendysForm />} />
+        <Route path="/Mcdonalds" element={<McdonaldsForm />} />
+      </Routes>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import axios from 'axios';
 const baseURL = 'https://foodsurvey-back.herokuapp.com/';
 
-const sendData = (formData) => {
-  const request = axios.post(baseURL, formData);
+const sendData = (formData, restName) => {
+  const request = axios.post(`${baseURL}${restName}`, formData);
   return request.then((res) => res.data);
 };
 
