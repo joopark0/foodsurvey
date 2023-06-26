@@ -11,7 +11,7 @@ div{
   font-family: Geologica;
 }
 
-button {
+.submitbutton {
   position: relative;
   /*display:block;*/
   height: 45px;
@@ -88,6 +88,7 @@ input{
   justify-content: space-between;
 }
 .navleft{
+  cursor: pointer;
   color: white;
 }
 

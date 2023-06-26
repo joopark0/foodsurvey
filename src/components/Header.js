@@ -1,8 +1,9 @@
-const Header = () => {
+const Header = (props) => {
+  const { navigate } = props;
   return (
     <div>
       <nav className="navmain">
-        <nav className="navleft" id="navLeft">
+        <nav className="navleft" id="navLeft" onClick={() => navigate('/')}>
           Food Survey Completer
         </nav>
         <nav className="navright">

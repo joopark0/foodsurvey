@@ -49,7 +49,7 @@ const Form = () => {
       meridiantime: meridianTime,
     };
     back
-      .sendData(jsonload)
+      .sendData(jsonload, 'wendys')
       .then((res) => {
         setreturnCode(res.code);
       })

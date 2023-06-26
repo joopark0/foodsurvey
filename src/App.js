@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { Route, Routes, Link, useLocation } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  Link,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 //import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import Home from './components/Home';
 import WendysForm from './components/WendysForm';
-import char1 from './images/char1.webp';
-import char2 from './images/char2.jpeg';
+import McdonaldsForm from './components/McdonaldsForm';
+import mcdlogo from './images/mcdlogo.png';
+import wendyslogo from './images/Wendys-logo.png';
 
 const App = () => {
   const [visible, setVisible] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -23,23 +32,26 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header navigate={navigate} />
       <br></br>
       {visible && (
         <div className="rest-grid">
           <div className="rest">
             <Link to="/Wendys" onClick={changeVisibility}>
-              <div className="restText">Wendys</div>
-              <img src={char1} />
+              <img src={wendyslogo} alt="wendys logo" className="logo-image" />
             </Link>
           </div>
-          <div className="rest">
-            <img src={char2} alt="" />
-          </div>
+          <Link to="/Mcdonalds" onClick={changeVisibility}>
+            <div className="rest">
+              <img src={mcdlogo} alt="mcdonalds logo" className="logo-image" />
+            </div>
+          </Link>
         </div>
       )}
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/Wendys" element={<WendysForm />} />
+        <Route path="/Mcdonalds" element={<McdonaldsForm />} />
       </Routes>
     </div>
   );
