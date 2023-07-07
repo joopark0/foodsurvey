@@ -10,6 +10,7 @@ import {
 //import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
 import WendysForm from './components/WendysForm';
 import McdonaldsForm from './components/McdonaldsForm';
 import mcdlogo from './images/mcdlogo.png';
@@ -49,6 +50,7 @@ const App = () => {
         </div>
       )}
       <Routes>
+        <Route path="*" element={<NotFound />}></Route>
         <Route path="/" element={<Home />} />
         <Route path="/Wendys" element={<WendysForm />} />
         <Route path="/Mcdonalds" element={<McdonaldsForm />} />
